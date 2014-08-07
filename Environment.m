@@ -1,5 +1,29 @@
-function[traffic_matrix,traffic_image_matrix,boarded]=Environment(time)
-% ENVIRONMENT Subsystem that generates map+ships+pirates
+function [traffic_matrix,traffic_image_matrix,boarded] = Environment(time)
+% ENVIRONMENT Subsystem that generates map, ships, pirates
+% 
+% Inputs:
+%   time: Simulation time in seconds. First call to ENVIRONMEMT must be at time = 0
+%     to initialize the persistent variables.
+%
+% Outputs:
+%   traffic_matrix: A 1000x1000 int8 matrix defininng the map of the area of interest.
+%     Contains values between 0 and 255, consistent with a grayscale image.
+%   traffic_image_matrix: Identical to traffic_matrix except that the region around the
+%     pirate is replaced with a 50x50 pixel image of a pirate (speedboat).
+%   boarded: Boolean that indicates whether or not the pirate has reached his target.
+%
+% Persistent Variables:
+%   pirate_pos:
+%   ship_pos_east:
+%   ship_pos_west:
+%   boats_pos:
+%   tanker_id:
+%   pirate_boat:
+%   map0:
+% 
+% Last Revised:
+%   7 August 2014
+
 % Provide the current simulation time and
 % the return is the environment shipping matrix
 
